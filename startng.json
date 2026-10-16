@@ -1,0 +1,9 @@
+{
+  "leaderboard": {
+    "stats": [
+      { "key": "score", "label": "High score", "order": "highest" },
+      { "key": "slashes", "label": "Drones slashed", "order": "highest" },
+      { "key": "distance", "label": "Metres run", "order": "highest" }
+    ]
+  }
+}

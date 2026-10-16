@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Cyber Slash</title>
+  <link rel="stylesheet" href="./style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚔️</text></svg>">
+</head>
+<body>
+  <!-- Canvas Game Viewport -->
+  <canvas id="gameCanvas"></canvas>
+
+  <!-- start.ng Player Profile Pill (Top-Left) -->
+  <div id="player-card" class="player-pill" hidden>
+    <img id="player-face" class="player-face-img" alt="Player Avatar">
+    <div class="player-meta">
+      <b id="player-name" class="player-name-text">Runner</b>
+      <span id="player-account" class="player-account-text">Guest</span>
+    </div>
+    <button id="player-sign-in" class="player-signin-btn" hidden>Sign In</button>
+  </div>
+
+  <!-- In-Game HUD (Top-Right) -->
+  <div id="hud" class="hud-container" hidden>
+    <div class="hud-item">
+      <span class="hud-label">Score</span>
+      <span id="hud-score" class="hud-value">0</span>
+    </div>
+    <div class="hud-item">
+      <span class="hud-label">Distance</span>
+      <span id="hud-distance" class="hud-value">0m</span>
+    </div>
+    <div class="hud-item">
+      <span class="hud-label">Slashes</span>
+      <span id="hud-slashes" class="hud-value">0</span>
+    </div>
+    <div class="hud-item">
+      <span class="hud-label">Combo</span>
+      <span id="hud-combo" class="hud-value combo-badge">x1</span>
+    </div>
+    <button id="leaderboard-btn" class="icon-btn leaderboard-trigger-btn" title="Leaderboard">🏆</button>
+    <button id="mute-btn" class="icon-btn" title="Toggle Sound">🔊</button>
+  </div>
+
+  <!-- Touch Controls Hints for Mobile -->
+  <div class="touch-hints">
+    <div class="touch-hint-box">◀ TAP: JUMP</div>
+    <div class="touch-hint-box">TAP: SLASH ▶</div>
+  </div>
+
+  <!-- Start Screen Overlay -->
+  <div id="start-screen" class="modal-overlay">
+    <div class="cyber-card">
+      <h1 class="game-title">Cyber Slash</h1>
+      <p class="game-subtitle">Neon Arcade Runner &bull; start.ng</p>
+
+      <div class="controls-panel">
+        <div class="control-box">
+          <div class="control-title">Jump / Double Jump</div>
+          <div>
+            <span class="key-badge">SPACE</span>
+            <span class="key-badge">W</span>
+            <span class="key-badge">↑</span>
+          </div>
+          <div class="control-desc">Or tap left half of screen</div>
+        </div>
+        <div class="control-box">
+          <div class="control-title">Plasma Katana Slash</div>
+          <div>
+            <span class="key-badge">J</span>
+            <span class="key-badge">Z</span>
+            <span class="key-badge">X</span>
+          </div>
+          <div class="control-desc">Or tap right half of screen</div>
+        </div>
+      </div>
+
+      <div class="action-buttons">
+        <button id="start-btn" class="btn-primary">START RUN</button>
+        <button id="start-leaderboard-btn" class="btn-secondary leaderboard-trigger-btn">VIEW LEADERBOARD</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Game Over Modal -->
+  <div id="game-over-modal" class="modal-overlay" hidden>
+    <div class="cyber-card">
+      <h2 class="over-title">RUN TERMINATED</h2>
+
+      <div class="final-stats-grid">
+        <div class="stat-card">
+          <div class="stat-title">Final Score</div>
+          <div id="final-score" class="stat-num">0</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-title">Drones Slashed</div>
+          <div id="final-slashes" class="stat-num">0</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-title">Distance</div>
+          <div id="final-distance" class="stat-num">0m</div>
+        </div>
+      </div>
+
+      <div id="rank-notice" class="rank-banner">
+        Connecting to start.ng...
+      </div>
+
+      <div class="action-buttons">
+        <button id="restart-btn" class="btn-primary">RUN AGAIN</button>
+        <button id="gameover-leaderboard-btn" class="btn-secondary leaderboard-trigger-btn">VIEW LEADERBOARD</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Leaderboard Modal -->
+  <div id="leaderboard-modal" class="modal-overlay" hidden>
+    <div class="cyber-card leaderboard-container">
+      <h2 class="leaderboard-header">🏆 Global Leaderboard</h2>
+      <ul id="leaderboard-list" class="leaderboard-list">
+        <li class="loading">Loading top runners…</li>
+      </ul>
+      <button id="close-leaderboard-btn" class="btn-secondary">CLOSE</button>
+    </div>
+  </div>
+
+  <!-- Main Game Script -->
+  <script type="module" src="./game.js"></script>
+</body>
+</html>
